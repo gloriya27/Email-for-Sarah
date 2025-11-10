@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email to Sarah</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            padding: 40px 20px;
+            line-height: 1.7;
+            color: #2c3e50;
+        }
+        
+        .email-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 40px 35px;
+            color: white;
+            text-align: center;
+        }
+        
+        .header-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .subject {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+        }
+        
+        .content {
+            padding: 45px 40px;
+        }
+        
+        .greeting {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 20px;
+        }
+        
+        .intro-text {
+            font-size: 16px;
+            color: #4a5568;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        
+        .key-points {
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%);
+            border-left: 5px solid #4caf50;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 35px 0;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.1);
+        }
+        
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            animation: slideIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .key-point:nth-child(1) { animation-delay: 0.1s; }
+        .key-point:nth-child(2) { animation-delay: 0.2s; }
+        .key-point:nth-child(3) { animation-delay: 0.3s; }
+        .key-point:nth-child(4) { animation-delay: 0.4s; }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+        
+        .key-point-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .key-point-text {
+            flex: 1;
+        }
+        
+        .key-point-title {
+            font-weight: 700;
+            font-size: 17px;
+            color: #2d3748;
+            margin-bottom: 4px;
+            display: block;
+        }
+        
+        .key-point-desc {
+            font-size: 15px;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        .section {
+            margin: 40px 0;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #e2e8f0;
+        }
+        
+        .section-icon {
+            font-size: 28px;
+            margin-right: 12px;
+        }
+        
+        .your-part {
+            background: linear-gradient(135deg, #fff3e0 0%, #fff8f0 100%);
+            border-radius: 12px;
+            padding: 30px;
+            border: 2px solid #ffb74d;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.08);
+        }
+        
+        .step {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        
+        .step:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 16px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .step-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .step-content {
+            margin-left: 44px;
+        }
+        
+        .checklist {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 12px 0;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 10px 0;
+            border-bottom: 1px solid #f7fafc;
+        }
+        
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        
+        .checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #cbd5e0;
+            border-radius: 4px;
+            margin-right: 12px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            background: white;
+        }
+        
+        .checklist-text {
+            font-size: 15px;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+        
+        .note {
+            background: #f7fafc;
+            border-left: 4px solid #9c27b0;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #4a5568;
+            font-style: italic;
+        }
+        
+        .note-icon {
+            margin-right: 8px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f0f7ff 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid #64b5f6;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.08);
+        }
+        
+        .action-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .action-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .action-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .action-text {
+            flex: 1;
+        }
+        
+        .action-title {
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 4px;
+            font-size: 16px;
+        }
+        
+        .action-desc {
+            color: #4a5568;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .emphasis-text {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: #667eea;
+            padding: 25px;
+            margin: 30px 0;
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+            border-radius: 12px;
+            border: 2px dashed #667eea;
+        }
+        
+        .collectors-box {
+            background: linear-gradient(135deg, #ffebee 0%, #fff5f7 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid #ef5350;
+            box-shadow: 0 4px 15px rgba(244, 67, 54, 0.08);
+        }
+        
+        .quote {
+            background: white;
+            border-left: 5px solid #e91e63;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin: 20px 0;
+            font-size: 17px;
+            font-weight: 600;
+            color: #1a202c;
+            font-style: italic;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .support-section {
+            background: linear-gradient(135deg, #f3e5f5 0%, #faf5fb 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 35px 0;
+            border: 2px solid #ba68c8;
+            box-shadow: 0 4px 15px rgba(156, 39, 176, 0.08);
+        }
+        
+        .support-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            font-size: 16px;
+            color: #2d3748;
+        }
+        
+        .support-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .support-icon {
+            font-size: 22px;
+            margin-right: 12px;
+        }
+        
+        .final-message {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: #667eea;
+            margin: 40px 0 35px;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba225 100%);
+            border-radius: 12px;
+            line-height: 1.4;
+        }
+        
+        .signature {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+        }
+        
+        .signature-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+        
+        .signature-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, #e8eaf6 0%, #f3f4fb 100%);
+            border-radius: 10px;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: #3f51b5;
+        }
+        
+        .contact-icon {
+            font-size: 20px;
+            margin-right: 8px;
+        }
+        
+        .print-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .print-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .email-container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+            
+            .print-button {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+            
+            .content {
+                padding: 30px 25px;
+            }
+            
+            .header {
+                padding: 30px 25px 25px;
+            }
+            
+            .subject {
+                font-size: 20px;
+            }
+            
+            .section-header {
+                font-size: 18px;
+            }
+            
+            .key-points,
+            .your-part,
+            .highlight-box,
+            .collectors-box,
+            .support-section {
+                padding: 20px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <div class="header-icon">💙</div>
+            <div class="subject">Sarah, we'll handle this together.</div>
+        </div>
+        
+        <div class="content">
+            <div class="greeting">Dear Sarah,</div>
+            
+            <div class="intro-text">
+                We hear you. We understand you. And we're here for you.
+            </div>
+            
+            <div class="intro-text">
+                Losing Jared, caring for your children, and now facing this fraud—it's too much for one person. But here's what matters now:
+            </div>
+            
+            <div class="key-points">
+                <div class="key-point">
+                    <div class="key-point-icon">💚</div>
+                    <div class="key-point-text">
+                        <span class="key-point-title">You are not alone.</span>
+                        <span class="key-point-desc">Now we are your team.</span>
+                    </div>
+                </div>
+                
+                <div class="key-point">
+                    <div class="key-point-icon">💚</div>
+                    <div class="key-point-text">
+                        <span class="key-point-title">This debt is not yours.</span>
+                        <span class="key-point-desc">We will do everything to remove it.</span>
+                    </div>
+                </div>
+                
+                <div class="key-point">
+                    <div class="key-point-icon">💚</div>
+                    <div class="key-point-text">
+                        <span class="key-point-title">Collectors will stop calling.</span>
+                        <span class="key-point-desc">We will take care of this.</span>
+                    </div>
+                </div>
+                
+                <div class="key-point">
+                    <div class="key-point-icon">💚</div>
+                    <div class="key-point-text">
+                        <span class="key-point-title">You don't need to figure it out.</span>
+                        <span class="key-point-desc">We really know what to do.</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-icon">🟢</span>
+                    Your part (only 3 simple steps):
+                </div>
+                
+                <div class="your-part">
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">1</span>
+                            Please find these 4 documents:
+                        </div>
+                        <div class="step-content">
+                            <div class="checklist">
+                                <div class="checklist-item">
+                                    <div class="checkbox"></div>
+                                    <div class="checklist-text">Jared's death certificate (certified copy)</div>
+                                </div>
+                                <div class="checklist-item">
+                                    <div class="checkbox"></div>
+                                    <div class="checklist-text">Your marriage certificate</div>
+                                </div>
+                                <div class="checklist-item">
+                                    <div class="checkbox"></div>
+                                    <div class="checklist-text">Your photo ID (driver's license or passport)</div>
+                                </div>
+                                <div class="checklist-item">
+                                    <div class="checkbox"></div>
+                                    <div class="checklist-text">The collection letter</div>
+                                </div>
+                            </div>
+                            <div class="note">
+                                <span class="note-icon">💭</span>
+                                If something's missing, don't worry — call me and we'll solve it together.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">2</span>
+                            Please take clear photos of them.
+                        </div>
+                        <div class="step-content">
+                            No scanner needed — just make sure text and seal are readable.
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">3</span>
+                            Please upload them here:
+                        </div>
+                        <div class="step-content">
+                            🔗 <strong>[Secure upload link]</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="emphasis-text">
+                    ✨ That's it. We'll do everything else.
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-icon">🔵</span>
+                    Our part (what we'll handle):
+                </div>
+                
+                <div class="highlight-box">
+                    <div class="action-item">
+                        <div class="action-icon">✅</div>
+                        <div class="action-text">
+                            <div class="action-title">Submit all documents to Experian</div>
+                            <div class="action-desc">to stop the fraud and protect Jared's record.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-item">
+                        <div class="action-icon">✅</div>
+                        <div class="action-text">
+                            <div class="action-title">Send an official letter to QuickCash Lending</div>
+                            <div class="action-desc">to stop all collection calls.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-item">
+                        <div class="action-icon">✅</div>
+                        <div class="action-text">
+                            <div class="action-title">Track the process and keep you updated</div>
+                            <div class="action-desc">every 2 weeks.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-item">
+                        <div class="action-icon">✅</div>
+                        <div class="action-text">
+                            <div class="action-title">Handle every step until this nightmare ends</div>
+                            <div class="action-desc">usually within 6–8 weeks.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-icon">🛡️</span>
+                    If collectors call again, say:
+                </div>
+                
+                <div class="collectors-box">
+                    <div class="quote">
+                        "Elayne is handling this. Please stop calling me."
+                    </div>
+                    
+                    <div class="intro-text" style="margin: 15px 0 0 0;">
+                        Then hang up — or give them my number. <strong>We'll be your shield.</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">
+                    Sarah, please remember:
+                </div>
+                
+                <div class="support-section">
+                    <div class="support-item">
+                        <span class="support-icon">🤍</span>
+                        You don't need to be strong right now.
+                    </div>
+                    
+                    <div class="support-item">
+                        <span class="support-icon">🤍</span>
+                        We'll be strong for you.
+                    </div>
+                    
+                    <div class="support-item">
+                        <span class="support-icon">🤍</span>
+                        Take care of yourself and your children — we'll take care of the debt.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="final-message">
+                💙 We'll get through this together.
+            </div>
+            
+            <div class="signature">
+                <div class="signature-text">With care,</div>
+                <div class="signature-name">[Your Name]</div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        [Phone]
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        [Email]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button class="print-button" onclick="window.print()">
+        🖨️ Print/Save as PDF
+    </button>
+</body>
+</html>
